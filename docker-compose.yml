@@ -1,0 +1,16 @@
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - XERO_HOST=http://mock-xero:3000/
+    depends_on:
+      - mock-xero
+
+  mock-xero:
+    image: jaypeng2015/show-me-the-money
+    ports:
+      - "3000:3000"
