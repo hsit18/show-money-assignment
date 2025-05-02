@@ -7,6 +7,7 @@ services:
     environment:
       - PORT=4000
       - XERO_HOST=http://mock-xero:3000/
+      - ALLOWED_ORIGINS=http://localhost:5173, http://localhost:3000
     depends_on:
       - mock-xero
 
