@@ -1,0 +1,9 @@
+
+# Exclude environment files
+.env
+.env.sample
+
+# Ignore build directories
+/dist
+node_modules
+coverage
