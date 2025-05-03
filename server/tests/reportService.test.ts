@@ -36,7 +36,7 @@ describe('Reports balance sheet API', () => {
     mockedAxios.get.mockRejectedValue(
       new Error('API failure'),
     );
-
+    
     const response = await request(app).get('/api/reports/balanceSheet');
     expect(response.status).toBe(500);
     expect(response.text).toContain('API failure');
