@@ -8,13 +8,23 @@ interface Cell {
 	Attributes?: Attribute[];
 }
 
-type ReportRowType = "Section" | "Header" | "Row" | "SummaryRow";
+export const ReportRowType = {
+	"SECTION" : "Section",
+	"HEADER" : "Header",
+	"ROW" : "Row",
+	"SUMMARY_ROW": "SummaryRow"
+} as const
 
-interface Row {
-	RowType: ReportRowType;
+interface SubRow {
+	RowType: string;
+	Cells: Cell[]
+}
+
+export interface ReportRow {
+	RowType: string;
 	Title?: string;
 	Cells?: Cell[];
-	Rows?: Row[];
+	Rows?: SubRow[];
 }
 
 export interface Report {
@@ -25,5 +35,5 @@ export interface Report {
 	ReportDate: string;
 	UpdatedDateUTC: string;
 	Fields: string[];
-	Rows: Row[];
+	Rows: ReportRow[];
 }
