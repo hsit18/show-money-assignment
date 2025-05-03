@@ -1,0 +1,1 @@
+export const SHOW_MONEY_API_HOST = import.meta.env.VITE_SHOW_MONEY_API_HOST || "";

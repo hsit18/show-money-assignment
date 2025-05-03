@@ -1,5 +1,14 @@
 services:
-  server:
+  show-money-client:
+    build:
+      context: ./client
+    ports:
+      - "5173:4001"
+    environment:
+      - VITE_SHOW_MONEY_API_HOST=http://show-money-server:4000
+    depends_on:
+      - show-money-server
+  show-money-server:
     build:
       context: ./server
     ports:
@@ -7,6 +16,7 @@ services:
     environment:
       - PORT=4000
       - XERO_HOST=http://mock-xero:3000/
+      - ALLOWED_ORIGINS=http://localhost:5173,http://localhost:4001,http://localhost:4173
     depends_on:
       - mock-xero
 

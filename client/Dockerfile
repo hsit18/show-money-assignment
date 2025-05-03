@@ -13,6 +13,6 @@ RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install
 COPY . .
 RUN pnpm run build
 
-EXPOSE 4000
+EXPOSE 4001
 
-CMD ["pnpm", "start"]
+CMD ["pnpm", "preview"]
