@@ -1,11 +1,9 @@
-import { Request, Response } from 'express';
-import { getBalanceSheetData } from '../src/services/reportService';
-
 import request from 'supertest';
 import app from '../src/app';
+import axios from 'axios';
 import * as xeroClient from '../src/api/reportApi';
 
-jest.mock('../src/api/reportApi');
+jest.mock('axios');
 
 describe('Reports balance sheet API', () => {
   test('balance sheet API returns data when the API call is successful', async () => {
@@ -20,8 +18,10 @@ describe('Reports balance sheet API', () => {
         },
       ],
     };
-    (xeroClient.getBalanceSheet as jest.Mock).mockResolvedValue(
-      mockBalanceSheetData,
+    const mockedAxios = axios as jest.Mocked<typeof axios>;
+    
+    mockedAxios.get.mockResolvedValue(
+      {data: mockBalanceSheetData},
     );
 
     const response = await request(app).get('/api/reports/balanceSheet');
@@ -31,7 +31,9 @@ describe('Reports balance sheet API', () => {
   });
 
   test('when balance sheet API fails it should return error', async () => {
-    (xeroClient.getBalanceSheet as jest.Mock).mockRejectedValue(
+    const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+    mockedAxios.get.mockRejectedValue(
       new Error('API failure'),
     );
 

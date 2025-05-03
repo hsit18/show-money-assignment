@@ -1,11 +1,12 @@
-import { xeroApiClient } from "./index";
+import axios from "axios";
+import config from "../config";
 
 export const getBalanceSheet = async () => {
     try {
-        const response = await xeroApiClient.get("api.xro/2.0/Reports/BalanceSheet");
+        const response = await axios.get(config.xeroHost+"api.xro/2.0/Reports/BalanceSheet");
         return response.data;
     } catch (error) {
         console.log(error);
-        throw new Error('Failed to fetch Balance Sheet from Xero API');
+        throw error;
     }
 }

@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, test, vi, type MockedFunction } from 'vit
 import { getBalanceSheet } from './reportService';
 import { mockedBalanceSheetResponse } from '@/tests/data/balanceSheetData';
 import axios from 'axios';
+
 vi.mock('axios', () => {
   return {
     default: {
