@@ -5,8 +5,7 @@ import { errorHandler } from './util/errorHandler';
 import config from './config';
 
 const app = express();
-
-// CORS
+console.log(JSON.stringify(config.allowedOrigins));
 app.use(cors({
     origin: config.allowedOrigins,
     methods: ['GET', 'OPTIONS'],

@@ -18,5 +18,13 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul'
     },
+  },
+  server: {
+      host: true,
+      port: 4001
+  },
+  preview: {
+      host: true,
+      port: 4001
   }
 })
