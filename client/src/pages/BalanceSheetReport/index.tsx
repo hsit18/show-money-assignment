@@ -40,7 +40,7 @@ export const BalanceSheetReport = () => {
             <h2 className="text-xl font-bold" aria-label={data[0]?.ReportTitles?.join(' - ')}>
                 {data[0]?.ReportTitles?.join(' - ')}
             </h2>
-            <table className='flex-1 m-5 overflow-auto h-96' data-testid='main-table'>
+            <table className='flex-1 m-5 overflow-auto h-96 max-w-4xl' data-testid='main-table'>
                 <thead>
                     <ReportHeader header={reportHeader} />
                 </thead>
