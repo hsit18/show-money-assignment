@@ -1,0 +1,35 @@
+name: Generate Unit Test Coverage Report
+on:
+  push:
+    branches: workflows
+
+jobs:
+  build:
+    name: generate coverage report
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: client generate coverage report
+        run: pnpm install && pnpm test:coverage
+        with:
+          working-directory: client
+
+      - name: server generate coverage report
+        run: pnpm install && pnpm test:coverage
+        with:
+          working-directory: server
