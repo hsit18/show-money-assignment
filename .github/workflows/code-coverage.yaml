@@ -26,8 +26,8 @@ jobs:
 
       - name: client generate coverage report
         run: pnpm install && pnpm test:coverage
-        working-directory: client
+        working-directory: ./client
 
       - name: server generate coverage report
         run: pnpm install && pnpm test:coverage
-        working-directory: server
+        working-directory: ./server
